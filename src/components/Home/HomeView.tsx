@@ -54,16 +54,18 @@ export const HomeView = () => {
           </div>
         </CardDescription>
       </Card>
-      {parkingLots.map((lot) => (
-        <ParkingLotCard
-          key={lot.id}
-          name={lot.name}
-          address={lot.address}
-          currentRate={lot.currentRate}
-          capacityLabel={`${lot.capacity} espacios`}
-          availableLabel={`${lot.capacity - lot.occupied}/${lot.capacity} disponibles`}
-        />
-      ))}
+      <div className="mt-6 space-y-4">
+        {parkingLots.map((lot) => (
+          <ParkingLotCard
+            key={lot.id}
+            name={lot.name}
+            address={lot.address}
+            currentRate={lot.currentRate}
+            capacityLabel={`${lot.capacity} espacios`}
+            availableLabel={`${lot.capacity - lot.occupied}/${lot.capacity} disponibles`}
+          />
+        ))}
+      </div>
     </div>
   );
 };

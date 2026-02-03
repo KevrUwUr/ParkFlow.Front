@@ -5,11 +5,11 @@ import { Card, CardContent } from "../ui/card";
 interface ParkingLotCardProps {
   name: string;
   address: string;
-  currentRate: string;     // ej: "$5,000/hora"
-  capacityLabel: string;   // ej: "50 espacios"
-  availableLabel: string;  // ej: "35/50 disponibles"
+  currentRate: string;
+  capacityLabel: string;
+  availableLabel: string;
   onEdit?: () => void;
-  rightExtra?: ReactNode;  // por si luego quieres añadir algo más
+  rightExtra?: ReactNode;
 }
 
 export function ParkingLotCard({
@@ -34,9 +34,7 @@ export function ParkingLotCard({
             <p className="text-xs sm:text-sm text-gray-500">{address}</p>
 
             <div className="mt-3 space-y-1">
-              <p className="text-xs sm:text-sm text-gray-500">
-                Tarifa actual:
-              </p>
+              <p className="text-xs sm:text-sm text-gray-500">Tarifa actual:</p>
               <p className="text-sm sm:text-base font-semibold text-green-600">
                 {currentRate}
               </p>
