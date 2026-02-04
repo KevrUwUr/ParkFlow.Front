@@ -67,16 +67,5 @@ export const parkingLots: ParkingLot[] = [
     place: "Belén",
     ocupados: 25,
     disponibles: 50,
-  },
-  {
-    id: "bogota",
-    name: "Parqueadero Bogotá",
-    address: "Cra 7 #72-30, Bogotá",
-    currentRate: "$7,000/hora",
-    capacity: 150,
-    occupied: 135,
-    place: "Bogotá",
-    ocupados: 90,
-    disponibles: 20,
-  },
+  }
 ];

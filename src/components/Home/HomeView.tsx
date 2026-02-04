@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { FaCar } from "react-icons/fa";
 import {
   MdOutlineAttachMoney,
@@ -7,9 +8,20 @@ import { DashboardCard } from "./DashboardCard";
 import { Card, CardDescription, CardHeader, CardTitle } from "../ui/card";
 import { DashboardChart } from "./DashboardChart";
 import { ParkingLotCard } from "./ParkingLotCard";
-import { parkingLots } from "@/data/ParkingsData";
+import { parkingLots as initialParkingLots } from "@/data/ParkingsData";
 
 export const HomeView = () => {
+  const [parkingLots, setParkingLots] = useState(initialParkingLots);
+
+  const handleRateUpdate = (parkingId: string, newRate: string) => {
+    setParkingLots((prevLots) =>
+      prevLots.map((lot) =>
+        lot.id === parkingId ? { ...lot, currentRate: newRate } : lot,
+      ),
+    );
+    console.log(`Tarifa actualizada para ${parkingId}:`, newRate);
+  };
+
   return (
     <div className="flex min-h-screen flex-col p-5 bg-gray-100">
       <h1 className="text-4xl font-bold mb-4">Dashboard de Parqueaderos</h1>
@@ -58,11 +70,13 @@ export const HomeView = () => {
         {parkingLots.map((lot) => (
           <ParkingLotCard
             key={lot.id}
+            id={lot.id}
             name={lot.name}
             address={lot.address}
             currentRate={lot.currentRate}
             capacityLabel={`${lot.capacity} espacios`}
             availableLabel={`${lot.capacity - lot.occupied}/${lot.capacity} disponibles`}
+            onRateUpdate={handleRateUpdate}
           />
         ))}
       </div>
